@@ -16,10 +16,7 @@ const hasTemporaryPass = false
 let isAccess = true
 
 // your code
-    if (isAdmin === true && hasSpecialPermission === true || 
-        isVerifiedUser === true && hasTemporaryPass === true ||
-        isAdmin === true && hasTemporaryPass === true ||
-        isVerifiedUser === true && hasSpecialPermission === true) {
+    if (isVerifiedUser === true && hasSpecialPermission === true) {
 document.write('Hello')
     } else {
         document.write('no way')
