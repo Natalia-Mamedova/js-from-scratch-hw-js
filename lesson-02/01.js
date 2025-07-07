@@ -13,11 +13,17 @@ const isVerifiedUser = true
 const hasSpecialPermission = true
 const hasTemporaryPass = false
 
-let isAccess = true
+let isAccess
 
 // your code
-    if (isVerifiedUser === true && hasSpecialPermission === true) {
-document.write('Hello')
-    } else {
-        document.write('no way')
-    }
+    if (isAdmin && hasSpecialPermission) {
+    isAccess = false
+} else if (isVerifiedUser && hasSpecialPermission) {
+    isAccess = true
+} else if (isVerifiedUser && hasTemporaryPass) {
+    isAccess = false 
+}
+else if (isAdmin && hasTemporaryPass) {
+    isAccess = false 
+}
+console.log(isAccess)
