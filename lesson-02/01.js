@@ -17,13 +17,13 @@ let isAccess
 
 // your code
     if (isAdmin && hasSpecialPermission) {
-    isAccess = false
-} else if (isVerifiedUser && hasSpecialPermission) {
     isAccess = true
+} else if (isVerifiedUser && hasSpecialPermission) {
+    isAccess = false
 } else if (isVerifiedUser && hasTemporaryPass) {
-    isAccess = false 
+    isAccess = true 
 }
 else if (isAdmin && hasTemporaryPass) {
-    isAccess = false 
+    isAccess = true 
 }
 console.log(isAccess)
