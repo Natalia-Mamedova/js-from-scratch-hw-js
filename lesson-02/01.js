@@ -24,6 +24,6 @@ let isAccess
     isAccess = true 
 }
 else if (isAdmin && hasTemporaryPass) {
-    isAccess = true 
+    isAccess = false 
 }
 console.log(isAccess)
