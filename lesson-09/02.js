@@ -29,29 +29,36 @@ const startButton = document.getElementById('start')
 const cancelButton = document.getElementById('cancel')
 const countdownDisplay = document.getElementById('countdown')
 
-let isTimerStarted = false
-let timerId
+let timerId = null
+let isTimerRunning = false
 
 startButton.addEventListener('click', () => {
-  let counter = 3
+  if (isTimerRunning) {
+    // Если таймер уже запущен, игнорируем кнопку "Старт"
+    return
+  }
 
+  let counter = 3
   countdownDisplay.textContent = counter
+  isTimerRunning = true
+
   timerId = setInterval(() => {
-    if (counter > 1) {
-      counter -= 1
+    counter -= 1
+    if (counter > 0) {
       countdownDisplay.textContent = counter
     } else {
-      clearInterval(timerId)
-      timerId = null
+      // Когда достигли нуля, показываем ракету и остановливаем таймер
       countdownDisplay.textContent = '🚀'
+      clearInterval(timerId)
+      isTimerRunning = false
     }
   }, 1000)
 })
 
 cancelButton.addEventListener('click', () => {
-if (timerId !== null) {
+  if (isTimerRunning) {
     clearInterval(timerId)
-    timerId = null
+    isTimerRunning = false
     countdownDisplay.textContent = 'Отменено'
   }
 })
